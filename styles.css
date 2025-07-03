@@ -9,7 +9,7 @@
 
 body {
     background-color: #193c34;
-    overflow: hidden;
+    /* overflow: hidden; */
     -webkit-overflow-scrolling: touch;
     position: absolute;
 }
