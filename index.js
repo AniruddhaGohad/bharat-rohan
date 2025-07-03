@@ -2,6 +2,7 @@
 const droneImage = document.getElementById('drone');
 const reload = document.getElementById('reload');
 const flash = document.getElementById('flash');
+const flash1 = document.getElementById('flash1');
 const { height: droneHeight, width: droneWidth } = droneImage.getBoundingClientRect();
 
 function isSmallScreen() {
@@ -164,51 +165,6 @@ const sleep = async (duration) => new Promise((resolve) => {
 const reset = () => {
     window.location.reload();
     return;
-    const droneStyle = {
-        width: '0px',
-        position: 'fixed',
-        top: '75%',
-        left: '35%',
-    }
-    for (let key in droneStyle) {
-        droneImage.style[key] = droneStyle[key];
-    }
-
-    const flashStyle = {
-        position: 'absolute',
-        transform: 'translate(-158.5%, 117%) scale(3)',
-        display: 'none',
-        opacity: '60%',
-    }
-
-    for (let key in flashStyle) {
-        flash.style[key] = flashStyle[key];
-    }
-
-    const page1Content = {
-        height: '60%',
-        marginTop: '35vh',
-        marginLeft: '20vw',
-        position: 'relative',
-        display: 'flex',
-        alignItems: 'center',
-        zIndex: '1',
-        gap: '3rem',
-    }
-
-    for (let key in page1Content) {
-        document.querySelector('.page1-content').style[key] = page1Content[key];
-    }
-
-    const page1Text = {
-        position: 'relative',
-        left: '-100px',
-        opacity: '0'
-    }
-
-    for (let key in page1Text) {
-        document.querySelector('.page1-text').style[key] = page1Content[key];
-    }
 
 }
 
@@ -227,7 +183,7 @@ async function init() {
     }
     flash.style.display = 'inline';
     await sleep(6000);
-    
+
     flash.style.display = 'none';
     slidePage1();
     scrollToPage(2, 2)
@@ -244,7 +200,7 @@ async function init() {
     document.querySelectorAll('.characteristic').forEach((element, k) => setTimeout(() => element.style.animation = "bloom 0.5s forwards linear", 500 * (k / 2)));
 
     await sleep(7000);
-    
+
     document.querySelectorAll('.characteristic').forEach((element, k) => setTimeout(() => element.style.animation = "fade 0.5s forwards linear", 500 * (k / 4)));
     flash.style.display = 'none';
     //     scrollToPage(3, 2);
@@ -309,12 +265,19 @@ async function init() {
         currentY -= 2;
     }
 
-    if (!isSmallScreen()) {
-        flash.setAttribute('src', 'https://kapps.co.in/BharatRohan/wp-content/uploads/2025/06/flash4.png');
-        flash.style.transform = 'translate(-12.2%, 19%) scale(1)';
-    }
+    // if (!isSmallScreen()) {
+    //     // flash.setAttribute('src', 'https://kapps.co.in/BharatRohan/wp-content/uploads/2025/06/flash4.png');
+    //     // flash.style.transform = 'translate(-12.2%, 19%) scale(1)';
+    // }
+
 
     flash.style.display = 'inline';
+
+    if (!isSmallScreen()) {
+        flash.style.display = 'none';
+        flash1.style.display = 'inline';
+    }
+
     document.querySelector('.page4-content').style.animation = "bloom 0.5s forwards linear"
     reload.style.display = 'block';
 }
